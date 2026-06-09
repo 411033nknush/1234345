@@ -6,61 +6,87 @@
     <title>單字翻牌 App</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="page-shell">
-      <header class="topbar">
+  <body class="min-h-screen bg-gradient-to-br from-ink via-panel to-panelSoft text-text antialiased">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              ink: '#040816',
+              panel: '#0f172a',
+              panelSoft: '#111827',
+              panelStrong: '#172033',
+              line: '#243244',
+              text: '#eff6ff',
+              muted: '#cbd5e1',
+              accent: '#8b5cf6',
+              glow: '#22d3ee',
+              success: '#34d399'
+            },
+            boxShadow: {
+              glow: '0 18px 40px rgba(15, 23, 42, 0.45)',
+              halo: '0 12px 30px rgba(139, 92, 246, 0.18)'
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <div class="page-shell mx-auto max-w-7xl px-5 py-6 lg:px-8">
+      <header class="topbar mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p class="eyebrow">純前端單字背誦工具</p>
           <h1>WordFlip</h1>
         </div>
-        <nav class="nav-links">
-          <a href="index.html" class="active">背單字</a>
-          <a href="manage.html">管理單字</a>
+        <nav class="nav-links flex flex-wrap gap-2">
+          <a href="index.html" class="active rounded-full border border-line bg-panel/80 px-4 py-2 text-text/95 shadow-halo transition hover:border-accent/70 hover:bg-panelStrong/90">背單字</a>
+          <a href="manage.html" class="rounded-full border border-line bg-panel/70 px-4 py-2 text-text/95 shadow-halo transition hover:border-accent/70 hover:bg-panelStrong/90">管理單字</a>
         </nav>
       </header>
 
-      <main class="main-grid">
-        <section class="panel hero-panel">
-          <p class="eyebrow">今日任務</p>
-          <h2>點擊卡片翻面，快速複習英文單字</h2>
-          <p class="lede">支援本地儲存、翻頁切換、與自訂管理頁，適合純前端快速上手使用。</p>
-          <div class="chip-row">
-            <span class="chip">純 HTML / CSS / JS</span>
-            <span class="chip">本地儲存</span>
-            <span class="chip">翻頁效果</span>
+      <main class="main-grid grid gap-6 lg:grid-cols-[1fr_1.1fr]">
+        <section class="panel hero-panel rounded-3xl border border-line bg-panel/90 p-6 shadow-glow backdrop-blur-xl">
+          <p class="eyebrow text-sm uppercase tracking-[0.25em] text-glow">今日任務</p>
+          <h2 class="text-2xl font-semibold text-text lg:text-3xl">點擊卡片翻面，快速複習英文單字</h2>
+          <p class="lede text-muted">支援本地儲存、翻頁切換、與自訂管理頁，適合純前端快速上手使用。</p>
+          <div class="chip-row mt-4 flex flex-wrap gap-2">
+            <span class="chip rounded-full border border-line bg-panelStrong/80 px-3 py-1 text-sm text-text">純 HTML / CSS / JS</span>
+            <span class="chip rounded-full border border-line bg-panelStrong/80 px-3 py-1 text-sm text-text">本地儲存</span>
+            <span class="chip rounded-full border border-line bg-panelStrong/80 px-3 py-1 text-sm text-text">翻頁效果</span>
           </div>
         </section>
 
-        <section class="panel study-panel">
+        <section class="panel study-panel rounded-3xl border border-line bg-panel/90 p-6 shadow-glow backdrop-blur-xl">
           <div class="study-header">
             <div>
-              <p class="eyebrow">單字卡片</p>
-              <h3 id="studyTitle">載入中…</h3>
+              <p class="eyebrow text-sm uppercase tracking-[0.25em] text-glow">單字卡片</p>
+              <h3 id="studyTitle" class="text-xl font-semibold text-text">載入中…</h3>
             </div>
-            <span id="studyCounter" class="badge">0 / 0</span>
+            <span id="studyCounter" class="badge rounded-full border border-line bg-panelStrong/80 px-3 py-1 text-sm text-text">0 / 0</span>
           </div>
 
           <button id="flashcard" class="flashcard" type="button" aria-label="翻頁卡片">
             <div class="flashcard-inner" id="flashcardInner">
-              <div class="flashcard-face flashcard-front">
-                <span class="face-label">正面</span>
-                <strong id="frontWord">Word</strong>
-                <small id="frontHint">點擊翻面查看中文與例句</small>
+              <div class="flashcard-face flashcard-front rounded-3xl border border-line bg-gradient-to-br from-panelStrong to-panelSoft p-6 shadow-halo text-text">
+                <span class="face-label text-xs uppercase tracking-[0.18em] text-glow">正面</span>
+                <strong id="frontWord" class="text-2xl font-semibold text-text">Word</strong>
+                <small id="frontHint" class="text-muted">點擊翻面查看中文與例句</small>
               </div>
-              <div class="flashcard-face flashcard-back">
-                <span class="face-label">背面</span>
-                <strong id="backTranslation">翻譯</strong>
-                <p id="backPartOfSpeech" class="muted">詞性</p>
-                <p id="backExample" class="example-text">例句</p>
-                <p id="backRoot" class="root-text">字根分析</p>
+              <div class="flashcard-face flashcard-back rounded-3xl border border-line bg-gradient-to-br from-panelStrong to-panelSoft p-6 shadow-halo text-text">
+                <span class="face-label text-xs uppercase tracking-[0.18em] text-glow">背面</span>
+                <strong id="backTranslation" class="text-2xl font-semibold text-text">翻譯</strong>
+                <p id="backPartOfSpeech" class="muted text-muted">詞性</p>
+                <p id="backExample" class="example-text text-text/95">例句</p>
+                <p id="backRoot" class="root-text text-accent/95">字根分析</p>
               </div>
             </div>
           </button>
 
-          <div class="study-actions">
-            <button id="prevBtn" class="ghost-btn" type="button">上一張</button>
-            <button id="shuffleBtn" class="primary-btn" type="button">隨機抽卡</button>
-            <button id="nextBtn" class="ghost-btn" type="button">下一張</button>
+          <div class="study-actions mt-4 flex flex-wrap gap-2">
+            <button id="prevBtn" class="ghost-btn rounded-xl border border-line bg-panelStrong/80 px-4 py-2 text-text transition hover:border-accent/70 hover:bg-panel/90" type="button">上一張</button>
+            <button id="shuffleBtn" class="primary-btn rounded-xl bg-gradient-to-r from-accent to-glow px-4 py-2 font-semibold text-ink transition hover:shadow-halo" type="button">隨機抽卡</button>
+            <button id="nextBtn" class="ghost-btn rounded-xl border border-line bg-panelStrong/80 px-4 py-2 text-text transition hover:border-accent/70 hover:bg-panel/90" type="button">下一張</button>
           </div>
         </section>
       </main>

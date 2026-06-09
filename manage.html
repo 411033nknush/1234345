@@ -6,63 +6,89 @@
     <title>管理單字</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <div class="page-shell">
-      <header class="topbar">
+  <body class="min-h-screen bg-gradient-to-br from-ink via-panel to-panelSoft text-text antialiased">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              ink: '#040816',
+              panel: '#0f172a',
+              panelSoft: '#111827',
+              panelStrong: '#172033',
+              line: '#243244',
+              text: '#eff6ff',
+              muted: '#cbd5e1',
+              accent: '#8b5cf6',
+              glow: '#22d3ee',
+              success: '#34d399'
+            },
+            boxShadow: {
+              glow: '0 18px 40px rgba(15, 23, 42, 0.45)',
+              halo: '0 12px 30px rgba(139, 92, 246, 0.18)'
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <div class="page-shell mx-auto max-w-7xl px-5 py-6 lg:px-8">
+      <header class="topbar mb-6 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p class="eyebrow">單字管理</p>
           <h1>新增與整理詞庫</h1>
         </div>
-        <nav class="nav-links">
-          <a href="index.html">背單字</a>
-          <a href="manage.html" class="active">管理單字</a>
+        <nav class="nav-links flex flex-wrap gap-2">
+          <a href="index.html" class="rounded-full border border-line bg-panel/70 px-4 py-2 text-text/95 shadow-halo transition hover:border-accent/70 hover:bg-panelStrong/90">背單字</a>
+          <a href="manage.html" class="active rounded-full border border-line bg-panel/80 px-4 py-2 text-text/95 shadow-halo transition hover:border-accent/70 hover:bg-panelStrong/90">管理單字</a>
         </nav>
       </header>
 
-      <main class="manage-grid">
-        <section class="panel form-panel">
-          <p class="eyebrow">新增單字</p>
-          <h2>輸入英文單字後，點擊自動填入</h2>
-          <p class="lede">系統會呼叫公開 API 取得翻譯、詞性、例句與字根分析，節省手動查詢時間。</p>
+      <main class="manage-grid grid gap-6 lg:grid-cols-2">
+        <section class="panel form-panel rounded-3xl border border-line bg-panel/90 p-6 shadow-glow backdrop-blur-xl">
+          <p class="eyebrow text-sm uppercase tracking-[0.25em] text-glow">新增單字</p>
+          <h2 class="text-2xl font-semibold text-text lg:text-3xl">輸入英文單字後，點擊自動填入</h2>
+          <p class="lede text-muted">系統會呼叫公開 API 取得翻譯、詞性、例句與字根分析，節省手動查詢時間。</p>
 
-          <form id="wordForm" class="word-form">
-            <label>
+          <form id="wordForm" class="word-form grid gap-3">
+            <label class="grid gap-1 text-muted">
               英文單字
-              <input id="englishWord" name="english" type="text" placeholder="例如：confidence" required />
+              <input id="englishWord" name="english" type="text" placeholder="例如：confidence" required class="rounded-2xl border border-line bg-panelStrong/90 px-4 py-3 text-text placeholder:text-muted/70 outline-none ring-0 transition focus:border-accent/70 focus:bg-panel" />
             </label>
-            <label>
+            <label class="grid gap-1 text-muted">
               中文翻譯
-              <input id="translation" name="translation" type="text" placeholder="自動填入或手動輸入" required />
+              <input id="translation" name="translation" type="text" placeholder="自動填入或手動輸入" required class="rounded-2xl border border-line bg-panelStrong/90 px-4 py-3 text-text placeholder:text-muted/70 outline-none transition focus:border-accent/70 focus:bg-panel" />
             </label>
-            <label>
+            <label class="grid gap-1 text-muted">
               詞性
-              <input id="partOfSpeech" name="partOfSpeech" type="text" placeholder="例如：noun / verb" />
+              <input id="partOfSpeech" name="partOfSpeech" type="text" placeholder="例如：noun / verb" class="rounded-2xl border border-line bg-panelStrong/90 px-4 py-3 text-text placeholder:text-muted/70 outline-none transition focus:border-accent/70 focus:bg-panel" />
             </label>
-            <label>
+            <label class="grid gap-1 text-muted">
               例句
-              <textarea id="exampleSentence" name="exampleSentence" rows="3" placeholder="可直接貼上例句"></textarea>
+              <textarea id="exampleSentence" name="exampleSentence" rows="3" placeholder="可直接貼上例句" class="rounded-2xl border border-line bg-panelStrong/90 px-4 py-3 text-text placeholder:text-muted/70 outline-none transition focus:border-accent/70 focus:bg-panel"></textarea>
             </label>
-            <label>
+            <label class="grid gap-1 text-muted">
               字根分析
-              <textarea id="rootAnalysis" name="rootAnalysis" rows="3" placeholder="可補充字根、詞綴說明"></textarea>
+              <textarea id="rootAnalysis" name="rootAnalysis" rows="3" placeholder="可補充字根、詞綴說明" class="rounded-2xl border border-line bg-panelStrong/90 px-4 py-3 text-text placeholder:text-muted/70 outline-none transition focus:border-accent/70 focus:bg-panel"></textarea>
             </label>
-            <div class="form-actions">
-              <button id="autoFillBtn" class="primary-btn" type="button">自動填入</button>
-              <button class="ghost-btn" type="submit">加入詞庫</button>
+            <div class="form-actions flex flex-wrap gap-2">
+              <button id="autoFillBtn" class="primary-btn rounded-xl bg-gradient-to-r from-accent to-glow px-4 py-2 font-semibold text-ink transition hover:shadow-halo" type="button">自動填入</button>
+              <button class="ghost-btn rounded-xl border border-line bg-panelStrong/80 px-4 py-2 text-text transition hover:border-accent/70 hover:bg-panel/90" type="submit">加入詞庫</button>
             </div>
           </form>
-          <p id="statusMessage" class="status-message" aria-live="polite"></p>
+          <p id="statusMessage" class="status-message min-h-[1.2em] text-glow" aria-live="polite"></p>
         </section>
 
-        <section class="panel list-panel">
+        <section class="panel list-panel rounded-3xl border border-line bg-panel/90 p-6 shadow-glow backdrop-blur-xl">
           <div class="study-header">
             <div>
-              <p class="eyebrow">已儲存單字</p>
-              <h3>詞庫清單</h3>
+              <p class="eyebrow text-sm uppercase tracking-[0.25em] text-glow">已儲存單字</p>
+              <h3 class="text-xl font-semibold text-text">詞庫清單</h3>
             </div>
-            <button id="clearBtn" class="ghost-btn" type="button">清空詞庫</button>
+            <button id="clearBtn" class="ghost-btn rounded-xl border border-line bg-panelStrong/80 px-4 py-2 text-text transition hover:border-accent/70 hover:bg-panel/90" type="button">清空詞庫</button>
           </div>
-          <ul id="wordList" class="word-list"></ul>
+          <ul id="wordList" class="word-list mt-4 grid gap-3"></ul>
         </section>
       </main>
     </div>

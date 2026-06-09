@@ -24,19 +24,19 @@ function renderWordList() {
 
   const words = loadWords();
   if (!words.length) {
-    list.innerHTML = '<li>目前沒有任何單字，先到「管理單字」頁面新增吧。</li>';
+    list.innerHTML = '<li class="rounded-2xl border border-line bg-panelStrong/90 p-4 text-muted">目前沒有任何單字，先到「管理單字」頁面新增吧。</li>';
     return;
   }
 
   list.innerHTML = words
     .map(
       (item) => `
-        <li>
-          <strong>${escapeHtml(item.english)}</strong>
-          <small>中文：${escapeHtml(item.translation || '—')}</small>
-          <small>詞性：${escapeHtml(item.partOfSpeech || '—')}</small>
-          <small>例句：${escapeHtml(item.exampleSentence || '—')}</small>
-          <small>字根分析：${escapeHtml(item.rootAnalysis || '—')}</small>
+        <li class="rounded-2xl border border-line bg-panelStrong/90 p-4 shadow-halo">
+          <strong class="mb-1 block text-base text-text">${escapeHtml(item.english)}</strong>
+          <small class="block text-muted/95">中文：${escapeHtml(item.translation || '—')}</small>
+          <small class="block text-muted/95">詞性：${escapeHtml(item.partOfSpeech || '—')}</small>
+          <small class="block text-muted/95">例句：${escapeHtml(item.exampleSentence || '—')}</small>
+          <small class="block text-muted/95">字根分析：${escapeHtml(item.rootAnalysis || '—')}</small>
         </li>
       `
     )
