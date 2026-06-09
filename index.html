@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>單字翻牌 App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">純前端單字背誦工具</p>
+          <h1>WordFlip</h1>
+        </div>
+        <nav class="nav-links">
+          <a href="index.html" class="active">背單字</a>
+          <a href="manage.html">管理單字</a>
+        </nav>
+      </header>
+
+      <main class="main-grid">
+        <section class="panel hero-panel">
+          <p class="eyebrow">今日任務</p>
+          <h2>點擊卡片翻面，快速複習英文單字</h2>
+          <p class="lede">支援本地儲存、翻頁切換、與自訂管理頁，適合純前端快速上手使用。</p>
+          <div class="chip-row">
+            <span class="chip">純 HTML / CSS / JS</span>
+            <span class="chip">本地儲存</span>
+            <span class="chip">翻頁效果</span>
+          </div>
+        </section>
+
+        <section class="panel study-panel">
+          <div class="study-header">
+            <div>
+              <p class="eyebrow">單字卡片</p>
+              <h3 id="studyTitle">載入中…</h3>
+            </div>
+            <span id="studyCounter" class="badge">0 / 0</span>
+          </div>
+
+          <button id="flashcard" class="flashcard" type="button" aria-label="翻頁卡片">
+            <div class="flashcard-inner" id="flashcardInner">
+              <div class="flashcard-face flashcard-front">
+                <span class="face-label">正面</span>
+                <strong id="frontWord">Word</strong>
+                <small id="frontHint">點擊翻面查看中文與例句</small>
+              </div>
+              <div class="flashcard-face flashcard-back">
+                <span class="face-label">背面</span>
+                <strong id="backTranslation">翻譯</strong>
+                <p id="backPartOfSpeech" class="muted">詞性</p>
+                <p id="backExample" class="example-text">例句</p>
+                <p id="backRoot" class="root-text">字根分析</p>
+              </div>
+            </div>
+          </button>
+
+          <div class="study-actions">
+            <button id="prevBtn" class="ghost-btn" type="button">上一張</button>
+            <button id="shuffleBtn" class="primary-btn" type="button">隨機抽卡</button>
+            <button id="nextBtn" class="ghost-btn" type="button">下一張</button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
