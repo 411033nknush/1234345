@@ -15,7 +15,7 @@
 
 body {
   margin: 0;
-  font-family: 'Noto Sans TC', sans-serif;
+  font-family: 'Segoe UI', 'Microsoft JhengHei', 'PingFang TC', Arial, sans-serif;
   color: var(--text);
   background:
     radial-gradient(circle at top, rgba(139, 92, 246, 0.16), transparent 30%),
