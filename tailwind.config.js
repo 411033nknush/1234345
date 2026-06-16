@@ -12,7 +12,8 @@ module.exports = {
         muted: '#cbd5e1',
         accent: '#8b5cf6',
         glow: '#22d3ee',
-        success: '#34d399'
+        success: '#34d399',
+        danger: '#fca5a5'
       },
       boxShadow: {
         glow: '0 18px 40px rgba(15, 23, 42, 0.45)',

@@ -139,7 +139,14 @@ function initManagePage() {
 
   function setStatus(text, tone = 'info') {
     statusMessage.textContent = text;
-    statusMessage.style.color = tone === 'error' ? '#fca5a5' : '#67e8f9';
+    statusMessage.classList.remove('text-danger', 'text-glow', 'text-success');
+    if (tone === 'error') {
+      statusMessage.classList.add('text-danger');
+    } else if (tone === 'success') {
+      statusMessage.classList.add('text-success');
+    } else {
+      statusMessage.classList.add('text-glow');
+    }
   }
 
   form.addEventListener('submit', (event) => {
